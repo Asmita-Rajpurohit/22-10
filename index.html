@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Birthday Wishes - Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffffff 50%, #f0f8ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .logo {
+            margin-bottom: 20px; /* Adds space between the logo and the button */
+            width: 70%; /* Set the width of the logo to be responsive */
+            max-width: 250px; /* Maximum width to maintain aspect ratio */
+            height: auto; /* Maintains aspect ratio */
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff6f91;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+        }
+
+        /* Media Query for smaller devices */
+        @media (max-width: 768px) {
+            .button {
+                font-size: 1.2em; /* Adjust button font size for smaller screens */
+                padding: 10px 20px; /* Adjust padding */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo centered above the button -->
+    <img src="logo.jfif" alt="Logo" class="logo">
+    <button class="button" onclick="redirectToNextPage()">Click to Open</button>
+
+    <script>
+        function redirectToNextPage() {
+            window.location.href = 'index1.html'; // Redirect to the next page
+        }
+    </script>
+</body>
+</html>

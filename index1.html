@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Surprise!</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Background Video */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure video is behind other elements */
+        }
+
+        /* Confetti Styling */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: #ff4081;
+            z-index: 2;
+            opacity: 0.7;
+            animation: confetti-fall 5s infinite ease-in-out;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100%) rotate(0); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        /* Create multiple confetti pieces */
+        .confetti:nth-child(2) {
+            left: 30%;
+            background-color: #4caf50;
+            animation-duration: 4s;
+        }
+        .confetti:nth-child(3) {
+            left: 70%;
+            background-color: #ffeb3b;
+            animation-duration: 6s;
+        }
+        .confetti:nth-child(4) {
+            left: 90%;
+            background-color: #2196f3;
+            animation-duration: 5.5s;
+        }
+
+        /* Button for playing song */
+        .play-button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 1; /* Keep button above confetti */
+        }
+
+        .play-button:hover {
+            background-color: #ff005f;
+        }
+
+        /* Let's Cut Cake Button */
+        .next {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1; /* Keep button above confetti */
+            transition: background-color 0.3s;
+        }
+
+        .next:hover {
+            background-color: #ff005f;
+        }
+
+        /* Media Query for smaller devices */
+        @media (max-width: 768px) {
+            .play-button {
+                font-size: 1.2em;
+            }
+
+            .next {
+                font-size: 1.2em;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .play-button, .next {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video id="birthdayVideo" muted loop>
+        <source src="happyBrithday.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Background Audio (initially muted) -->
+    <audio id="birthdayAudio" loop>
+        <source src="2.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Confetti Effect -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <!-- Play Song Button -->
+    <button class="play-button" onclick="playSong()">Click Here</button>
+
+    <!-- Let's Cut Cake Button -->
+    <button class="next" onclick="redirectToNextPage()">Let's Cut Cake</button>
+
+    <script>
+        // Pause the video initially
+        var video = document.getElementById('birthdayVideo');
+        video.pause();
+
+        function playSong() {
+            var audio = document.getElementById('birthdayAudio');
+            audio.muted = false; // Unmute the audio
+            audio.play(); // Play the audio
+
+            // Play the background video
+            video.play();
+
+            document.querySelector('.play-button').style.display = 'none'; // Hide the button
+        }
+
+        function redirectToNextPage() {
+            window.location.href = 'cake-cutting.html'; // Redirect to the next page
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Cutting!</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff5e6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Background Video */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure video is behind other elements */
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Keep content above video */
+        }
+
+        /* Cake-cutting scaling animation */
+        img {
+            width: 100%; /* Responsive image */
+            max-width: 400px; /* Maximum width */
+            animation: scaleIn 2s ease-in-out;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Next Page Button (positioned bottom-right) */
+        .next-page a {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            display: inline-block;
+            transition: background-color 0.3s;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .next-page a:hover {
+            background-color: #ff005f;
+        }
+
+        /* Play Song Button */
+        .play-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            z-index: 1;
+        }
+
+        .play-button:hover {
+            background-color: #ff005f;
+        }
+
+        /* Media Query for smaller devices */
+        @media (max-width: 768px) {
+            .next-page a {
+                font-size: 1.2em;
+            }
+
+            .play-button {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .next-page a, .play-button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <video id="birthdayVideo" muted loop>
+            <source src="cake.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Play Song Button -->
+        <button class="play-button" onclick="playSong()">click here</button>
+
+        <!-- Next Page Button (bottom-right corner) -->
+        <div class="next-page">
+            <a href="wish.html">next-page </a>
+        </div>
+    </div>
+
+    <audio id="birthdayAudio">
+        <source src="cake.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        // Initially pause the background video
+        var video = document.getElementById('birthdayVideo');
+        video.pause();
+
+        function playSong() {
+            var audio = document.getElementById('birthdayAudio');
+            audio.play(); // Play the audio
+
+            // Play the background video when button is clicked
+            video.play();
+
+            // Hide the play button after clicking
+            document.querySelector('.play-button').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

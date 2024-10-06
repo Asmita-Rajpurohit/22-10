@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Surprise!</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Fullscreen background video styling */
+       /* Fullscreen background video styling */
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Covers the full viewport width */
+    height: 100vh; /* Covers the full viewport height */
+    object-fit: cover; /* Ensures video covers the entire screen */
+    object-position: center; /* Keeps the video centered */
+    z-index: -1; /* Keeps video behind the content */
+}
+
+
+        /* Container for the content */
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgb(156, 52, 52);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Text styling, initially hidden */
+        .sentence {
+            font-size: 2.5em;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: var(--delay);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Button for next page */
+        .next-page a {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .next-page a:hover {
+            background-color: #ff005f;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Query for smaller devices */
+        @media (max-width: 768px) {
+            .sentence {
+                font-size: 1.8em;
+            }
+
+            .next-page a {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Media Query for very small devices */
+        @media (max-width: 480px) {
+            .sentence {
+                font-size: 1.5em;
+            }
+
+            .next-page a {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
+
+        /* Play Button */
+        .play-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .play-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video id="Video" autoplay muted loop>
+        <source src="wish.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Birthday Song -->
+    <audio id="birthdaySong" loop>
+        <source src="wish.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Content with play button -->
+    <div class="container">
+        <!-- Play Song Button -->
+        <button class="play-button" id="playButton" onclick="playAudio()">Click for Surprise</button>
+
+        <!-- Text (Initially Hidden) -->
+        <div id="messageContainer" class="hidden">
+            <div class="sentence" style="--delay: 1s;">Janamdin ke dher saari badhai ho</div>
+            <div class="sentence" style="--delay: 4s;">Aaj ke din toh hum bas itna hi kehna chahi</div>
+            <div class="sentence" style="--delay: 8s;">tu hamaar jeevan me bahut khaas ba.</div>                      
+            <div class="sentence" style="--delay: 11s;">Tohar muskaan hamaar din bana deti hai,</div>
+            <div class="sentence" style="--delay: 14s;">aur tuhare saath bitaye pal hamesha yaadgaar rahtein hai.</div>
+            <div class="sentence" style="--delay: 17s;">Bhagwan kare, tuhare sab sapna pura hoi,</div>
+            <div class="sentence" style="--delay: 20s;">aur tu hamesha khush rahu!</div>
+        </div>
+    </div>
+
+    <script>
+        function playAudio() {
+            var audio = document.getElementById('birthdaySong');
+            var messageContainer = document.getElementById('messageContainer');
+            var playButton = document.getElementById('playButton');
+
+            // Play the audio
+            audio.play();
+
+            // Hide the play button
+            playButton.style.display = 'none';
+
+            // Show the text after a delay
+            setTimeout(function() {
+                messageContainer.classList.remove('hidden');
+            }, 1000);  // 1 second delay before showing the text
+        }
+    </script>
+
+</body>
+</html>
