@@ -19,10 +19,10 @@
         }
 
         .logo {
-            margin-bottom: 20px; /* Adds space between the logo and the button */
-            width: 70%; /* Set the width of the logo to be responsive */
-            max-width: 250px; /* Maximum width to maintain aspect ratio */
-            height: auto; /* Maintains aspect ratio */
+            margin-bottom: 20px;
+            width: 70%;
+            max-width: 250px;
+            height: auto;
         }
 
         .button {
@@ -45,13 +45,46 @@
         /* Media Query for smaller devices */
         @media (max-width: 768px) {
             .button {
-                font-size: 1.2em; /* Adjust button font size for smaller screens */
-                padding: 10px 20px; /* Adjust padding */
+                font-size: 1.2em;
+                padding: 10px 20px;
             }
+        }
+
+        /* Notification Popup CSS */
+        #notificationPopup {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffeb3b;
+            color: #000;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+        #notificationPopup button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #notificationPopup button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
+
+    <!-- Notification Popup -->
+    <div id="notificationPopup">
+        कृपया अपने मोबाइल में **Desktop Site** और **Mobile Rotation** चालू रखें ताकि वेबसाइट अच्छे से काम करे।
+        <button onclick="closePopup()">ठीक है</button>
+    </div>
+
     <!-- Logo centered above the button -->
     <img src="logo.jfif" alt="Logo" class="logo">
     <button class="button" onclick="redirectToNextPage()">Click to Open</button>
@@ -60,6 +93,12 @@
         function redirectToNextPage() {
             window.location.href = 'index1.html'; // Redirect to the next page
         }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById("notificationPopup").style.display = "none";
+        }
     </script>
+
 </body>
 </html>
